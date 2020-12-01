@@ -1,0 +1,17 @@
+rest-config:
+  string-property: Monday
+  boolean-property: true
+  integer-property: 23
+  encoded-property: ZW5jb2RlZCBwcm9wZXJ0eQ==
+#azurec:
+#  account-name: gojkohajdukovicstorage
+#  account-key: +1QLyBX0JXk3Kim7D7XzKmAxSQIxJ1u5auakuzfl3N0ClUC1tcgnCn0zCFSkT6MkpEUCYAMZrnxXbpYT3f+7UA==
+#  account-endpoint: https://gojkohajdukovicstorage.blob.core.windows.net
+#  account-container: rso-images
+
+#  name-property : gojkohajdukovicstorage
+#  key-property  : +1QLyBX0JXk3Kim7D7XzKmAxSQIxJ1u5auakuzfl3N0ClUC1tcgnCn0zCFSkT6MkpEUCYAMZrnxXbpYT3f+7UA==
+#  endpoint-property : https://gojkohajdukovicstorage.blob.core.windows.net
+#  container-property : rso-images
+
+

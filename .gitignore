@@ -9,4 +9,4 @@
 
 .idea
 #Ignore target files
-/api/target/
+api/target/

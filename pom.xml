@@ -105,7 +105,7 @@
 
                <dependency>
                    <groupId>com.kumuluz.ee</groupId>
-                   <artifactId>kumuluzee-jpa-hibernate</artifactId>
+                   <artifactId>kumuluzee-jpa-eclipselink</artifactId>
                </dependency>
                <dependency>
                    <groupId>com.kumuluz.ee</groupId>
@@ -126,21 +126,7 @@
                    <artifactId>geronimo-config-impl</artifactId>
                    <version>1.0</version>
                </dependency>
-<!--               <dependency>-->
-<!--                   <groupId>com.kumuluz.ee.config</groupId>-->
-<!--                   <artifactId>kumuluzee-config-mp</artifactId>-->
-<!--                   <version>1.4.0-SNAPSHOT</version>-->
-<!--               </dependency>-->
-<!--               <dependency>-->
-<!--                   <artifactId>kumuluzee-config</artifactId>-->
-<!--                   <groupId>com.kumuluz.ee.config</groupId>-->
-<!--                   <version>1.2.0-SNAPSHOT</version>-->
-<!--               </dependency>-->
-<!--               <dependency>-->
-<!--                   <groupId>com.sun.jersey.contribs</groupId>-->
-<!--                   <artifactId>jersey-multipart</artifactId>-->
-<!--                   <version>1.13</version>-->
-<!--               </dependency>-->
+
            </dependencies>
 
 

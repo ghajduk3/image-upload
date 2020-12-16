@@ -1,5 +1,6 @@
 package si.fri.rso.image_upload.model.dto;
 
+import java.io.BufferedInputStream;
 import java.io.Serializable;
 
 import java.util.Date;
@@ -13,9 +14,17 @@ public class ImageDTO implements Serializable {
     private int width;
     private String blob_uri;
     private String thumbnail_blob_uri;
+    private String fileInputStream;
+    private Long fileLength;
+
 
     public ImageDTO(){
 
+    }
+
+    public ImageDTO(String fileInputStream, Long fileLength) {
+        this.fileInputStream = fileInputStream;
+        this.fileLength = fileLength;
     }
 
     public ImageDTO(String title, String description, long size, Date created, String blob_uri) {
@@ -25,7 +34,12 @@ public class ImageDTO implements Serializable {
         this.created = created;
         this.blob_uri = blob_uri;
     }
-
+    public ImageDTO(String title, long size, Date created, String blob_uri) {
+        this.title = title;
+        this.size = size;
+        this.created = created;
+        this.blob_uri = blob_uri;
+    }
     public ImageDTO(String title, String description, long size, Date created, int height, int width, String blob_uri, String thumbnail_blob_uri) {
         this.title = title;
         this.description = description;
@@ -99,5 +113,20 @@ public class ImageDTO implements Serializable {
 
     public void setThumbnail_blob_uri(String thumbnail_blob_uri) {
         this.thumbnail_blob_uri = thumbnail_blob_uri;
+    }
+    public String getFileInputStream() {
+        return fileInputStream;
+    }
+
+    public void setFileInputStream(String fileInputStream) {
+        this.fileInputStream = fileInputStream;
+    }
+
+    public Long getFileLength() {
+        return fileLength;
+    }
+
+    public void setFileLength(Long fileLength) {
+        this.fileLength = fileLength;
     }
 }

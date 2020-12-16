@@ -11,6 +11,8 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
 import java.io.*;
+import java.util.Base64;
+import java.util.UUID;
 
 
 import org.glassfish.jersey.media.multipart.FormDataContentDisposition;
@@ -26,15 +28,30 @@ public class UploadResource {
     @Inject
     private ImageBean imageBean;
 
+//    @POST
+//    @Produces(MediaType.APPLICATION_JSON)
+//    public Response uploadImage(@FormDataParam("file") File inputFile, @FormDataParam("file") FormDataContentDisposition fileMetadata,@FormDataParam("description") String description) {
+//        try {
+//            BufferedInputStream fileInputStream = new BufferedInputStream(new FileInputStream(inputFile));
+//            ImageDTO imageMetadata = imageBean.uploadImageToAzure(fileInputStream, fileMetadata.getFileName(), inputFile.length(),description);
+//            return Response.ok(imageMetadata).build();
+//        } catch (FileNotFoundException e) {
+//            return Response.status(404).build();
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//            return Response.serverError().build();
+//        }
+//
+//    }
+
+
     @POST
     @Produces(MediaType.APPLICATION_JSON)
-    public Response uploadImage(@FormDataParam("file") File inputFile, @FormDataParam("file") FormDataContentDisposition fileMetadata,@FormDataParam("description") String description) {
+    public Response uploadImage(ImageDTO dto) {
         try {
-            BufferedInputStream fileInputStream = new BufferedInputStream(new FileInputStream(inputFile));
-            ImageDTO imageMetadata = imageBean.uploadImageToAzure(fileInputStream, fileMetadata.getFileName(), inputFile.length(),description);
-            return Response.ok(imageMetadata).build();
-        } catch (FileNotFoundException e) {
-            return Response.status(404).build();
+//            BufferedInputStream fileInputStream = new BufferedInputStream(new ByteArrayInputStream(inputBytes));
+            ImageDTO imageMetadata = imageBean.uploadImageToAzure(new ByteArrayInputStream(Base64.getDecoder().decode(dto.getFileInputStream())), UUID.randomUUID().toString() + ".txt",dto.getFileLength());
+            return Response.ok(imageMetadata).entity(2).build();
         } catch (Exception e) {
             e.printStackTrace();
             return Response.serverError().build();

@@ -49,9 +49,8 @@ public class UploadResource {
     @Produces(MediaType.APPLICATION_JSON)
     public Response uploadImage(ImageDTO dto) {
         try {
-//            BufferedInputStream fileInputStream = new BufferedInputStream(new ByteArrayInputStream(inputBytes));
-            ImageDTO imageMetadata = imageBean.uploadImageToAzure(new ByteArrayInputStream(Base64.getDecoder().decode(dto.getFileInputStream())), UUID.randomUUID().toString() + ".txt",dto.getFileLength());
-            return Response.ok(imageMetadata).entity(2).build();
+            ImageDTO image = imageBean.uploadImageToAzure(new ByteArrayInputStream(Base64.getDecoder().decode(dto.getFileInputStream())), UUID.randomUUID().toString() + ".txt",dto.getFileLength());
+            return Response.status(200).entity(image.getId()).build();
         } catch (Exception e) {
             e.printStackTrace();
             return Response.serverError().build();

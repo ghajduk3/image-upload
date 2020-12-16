@@ -1,19 +1,18 @@
 package si.fri.rso.image_upload.model.dto;
 
+import javax.persistence.Column;
 import java.io.BufferedInputStream;
 import java.io.Serializable;
 
 import java.util.Date;
 
 public class ImageDTO implements Serializable {
-    private String title;
-    private String description;
-    private long size;
-    private Date created;
-    private int height;
-    private int width;
-    private String blob_uri;
-    private String thumbnail_blob_uri;
+
+    private Integer id;
+    private String name;
+    private Date dateCreated = new Date();
+    private Long image_size;
+    private String image_uri;
     private String fileInputStream;
     private Long fileLength;
 
@@ -27,93 +26,60 @@ public class ImageDTO implements Serializable {
         this.fileLength = fileLength;
     }
 
-    public ImageDTO(String title, String description, long size, Date created, String blob_uri) {
-        this.title = title;
-        this.description = description;
-        this.size = size;
-        this.created = created;
-        this.blob_uri = blob_uri;
-    }
-    public ImageDTO(String title, long size, Date created, String blob_uri) {
-        this.title = title;
-        this.size = size;
-        this.created = created;
-        this.blob_uri = blob_uri;
-    }
-    public ImageDTO(String title, String description, long size, Date created, int height, int width, String blob_uri, String thumbnail_blob_uri) {
-        this.title = title;
-        this.description = description;
-        this.size = size;
-        this.created = created;
-        this.height = height;
-        this.width = width;
-        this.blob_uri = blob_uri;
-        this.thumbnail_blob_uri = thumbnail_blob_uri;
+    public ImageDTO(String name, Long image_size, String image_uri) {
+        this.name = name;
+        this.image_size = image_size;
+        this.image_uri = image_uri;
     }
 
-    public String getTitle() {
-        return title;
+    public ImageDTO(Integer id, String name, Date dateCreated, Long image_size, String image_uri) {
+        this.id = id;
+        this.name = name;
+        this.dateCreated = dateCreated;
+        this.image_size = image_size;
+        this.image_uri = image_uri;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public Integer getId() {
+        return id;
     }
 
-    public String getDescription() {
-        return description;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public String getName() {
+        return name;
     }
 
-    public long getSize() {
-        return size;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public void setSize(long size) {
-        this.size = size;
+    public Date getDateCreated() {
+        return dateCreated;
     }
 
-    public Date getCreated() {
-        return created;
+    public void setDateCreated(Date dateCreated) {
+        this.dateCreated = dateCreated;
     }
 
-    public void setCreated(Date created) {
-        this.created = created;
+    public Long getImage_size() {
+        return image_size;
     }
 
-    public int getHeight() {
-        return height;
+    public void setImage_size(Long image_size) {
+        this.image_size = image_size;
     }
 
-    public void setHeight(int height) {
-        this.height = height;
+    public String getImage_uri() {
+        return image_uri;
     }
 
-    public int getWidth() {
-        return width;
+    public void setImage_uri(String image_uri) {
+        this.image_uri = image_uri;
     }
 
-    public void setWidth(int width) {
-        this.width = width;
-    }
-
-    public String getBlob_uri() {
-        return blob_uri;
-    }
-
-    public void setBlob_uri(String blob_uri) {
-        this.blob_uri = blob_uri;
-    }
-
-    public String getThumbnail_blob_uri() {
-        return thumbnail_blob_uri;
-    }
-
-    public void setThumbnail_blob_uri(String thumbnail_blob_uri) {
-        this.thumbnail_blob_uri = thumbnail_blob_uri;
-    }
     public String getFileInputStream() {
         return fileInputStream;
     }

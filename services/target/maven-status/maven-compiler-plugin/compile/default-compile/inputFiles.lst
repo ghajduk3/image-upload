@@ -1,2 +1,5 @@
+/home/gojko/Documents/faks/rso-vaje/image-upload/services/src/main/java/si/fri/rso/image_upload/services/dao/ImageDAO.java
 /home/gojko/Documents/faks/rso-vaje/image-upload/services/src/main/java/si/fri/rso/image_upload/services/infrastructure/AzureStorage.java
+/home/gojko/Documents/faks/rso-vaje/image-upload/services/src/main/java/si/fri/rso/image_upload/services/dao/GenericDAO.java
+/home/gojko/Documents/faks/rso-vaje/image-upload/services/src/main/java/si/fri/rso/image_upload/services/producers/PersistenceProducer.java
 /home/gojko/Documents/faks/rso-vaje/image-upload/services/src/main/java/si/fri/rso/image_upload/services/cdi/ImageBean.java

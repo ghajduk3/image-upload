@@ -1,2 +1,5 @@
-si/fri/rso/image_upload/services/infrastructure/AzureStorage.class
 si/fri/rso/image_upload/services/cdi/ImageBean.class
+si/fri/rso/image_upload/services/producers/PersistenceProducer.class
+si/fri/rso/image_upload/services/dao/ImageDAO.class
+si/fri/rso/image_upload/services/infrastructure/AzureStorage.class
+si/fri/rso/image_upload/services/dao/GenericDAO.class

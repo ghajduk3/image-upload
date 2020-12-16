@@ -1,0 +1,1 @@
+insert into images(name, image_size, image_uri) values ('gojko.txt',15.0,'Uriii')

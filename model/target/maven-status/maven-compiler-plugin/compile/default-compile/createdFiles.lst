@@ -1,1 +1,5 @@
+si/fri/rso/image_upload/model/transformers/ImageConverter.class
+si/fri/rso/image_upload/model/transformers/InstantAttributeConverter.class
+si/fri/rso/image_upload/model/transformers/GenericConverter.class
+si/fri/rso/image_upload/model/entities/ImageEntity.class
 si/fri/rso/image_upload/model/dto/ImageDTO.class

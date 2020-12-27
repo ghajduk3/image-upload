@@ -16,9 +16,6 @@ import java.util.Date;
 import java.util.TimeZone;
 
 
-import si.fri.rso.image_upload.model.entities.ImageEntity;
-import si.fri.rso.image_upload.model.transformers.ImageConverter;
-import si.fri.rso.image_upload.services.dao.ImageDAO;
 import si.fri.rso.image_upload.services.infrastructure.AzureStorage;
 
 @RequestScoped
@@ -32,32 +29,22 @@ public class ImageBean {
     @Inject @ConfigProperty(name="AZURE_CONTAINER_NAME")
     private String containerName;
 
-    @Inject
-    private ImageDAO imageDAO;
-
-    @Inject
-    private ImageConverter imageConverter;
 
 
     public ImageDTO uploadImageToAzure(InputStream fileStream, String filename, Long filesize) {
         BlobContainerClient containerClient = azureStorage.getContainerClient();
         BlobClient blobClient = containerClient.getBlobClient(filename);
-        ImageEntity entity = new ImageEntity();
+        String imageUri = null;
         try {
             blobClient.upload(fileStream, filesize, true);
-            String imageUri = generateBlobUrl(filename,azureStorage.generateSAStoken());
-            entity = imageDAO.createNew(imageConverter.transformToEntity(new ImageDTO(filename,filesize,imageUri)));
-            return  imageConverter.transformToDTO(entity);
+            imageUri = generateBlobUrl(filename,azureStorage.generateSAStoken());
+            System.out.println(imageUri);
 
         } catch (Exception ex) {
             System.out.printf("Greska je : %s", ex.toString());
         }
-
-        if(entity == null){
-            throw new InternalError();
-        }else{
-            return imageConverter.transformToDTO(entity);
-        }
+        System.out.println(imageUri);
+        return new ImageDTO(filename,filesize,imageUri);
 
     }
 

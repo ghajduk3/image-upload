@@ -10,3 +10,5 @@
 .idea
 #Ignore target files
 api/target/
+model/target/
+services/target/

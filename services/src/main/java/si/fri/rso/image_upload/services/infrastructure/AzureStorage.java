@@ -17,6 +17,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 //import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import si.fri.rso.image_upload.services.config.AppProperties;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -31,12 +32,8 @@ import java.util.TimeZone;
 @ApplicationScoped
 public class AzureStorage {
 
-    @Inject @ConfigProperty(name="AZURE_ACCOUNT_NAME")
-    private String accountName;
-    @Inject @ConfigProperty(name="AZURE_ACCOUNT_KEY")
-    private String accountKey;
-    @Inject @ConfigProperty(name="AZURE_CONTAINER_NAME")
-    private String containerName;
+    @Inject
+    private AppProperties config;
 
 
     @PostConstruct
@@ -45,14 +42,14 @@ public class AzureStorage {
     }
 
     public BlobContainerClient getContainerClient(){
-        String endpoint = "https://" + this.accountName + ".blob.core.windows.net";
+        String endpoint = "https://" + config.getAccountName() + ".blob.core.windows.net";
 
-        StorageSharedKeyCredential credential = new StorageSharedKeyCredential(accountName, accountKey);
+        StorageSharedKeyCredential credential = new StorageSharedKeyCredential(config.getAccountName(), config.getAccountKey());
         BlobServiceClient blobServiceClient = new BlobServiceClientBuilder()
                 .endpoint(endpoint)
                 .credential(credential)
                 .buildClient();
-        return blobServiceClient.getBlobContainerClient(containerName);
+        return blobServiceClient.getBlobContainerClient(config.getContainerName());
 
     }
     public String generateSAStoken(){
@@ -64,8 +61,8 @@ public class AzureStorage {
         String start = fmt.format(cal.getTime());
         cal.add(Calendar.MONTH, 2);
         String expiry =  fmt.format(cal.getTime());
-        String StorageAccountName = this.accountName;
-        String StorageAccountKey = this.accountKey;
+        String StorageAccountName = config.getAccountName();
+        String StorageAccountKey = config.getAccountKey();
         String apiVersion="2019-07-07";
         String  resource ="sco";
         String permissions ="rwdlac";

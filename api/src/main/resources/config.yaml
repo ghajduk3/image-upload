@@ -1,7 +1,12 @@
 kumuluzee:
-  name: order-service
+  name: image-upload
   env:
     name: dev
+  config:
+    start-retry-delay-ms: 500
+    max-retry-delay-ms: 900000
+    etcd:
+      hosts: http://localhost:2379
   version: 1.0.0
   server:
     base-url: http://localhost:8082
@@ -15,5 +20,9 @@ kumuluzee:
   persistence-units:
     - name: "event-catalog-jpa"
       continue-on-error: false
+azure-properties:
+  azure-account-name: gojkohajdukovicstorage1
+  azure-account-key: xm/WXSmmT7X86ZM49XElbfSR5qlH/viqS4r0cJi5NbbsqYt8fj22bMUE2Dhv0QQx3vh6xkTWZlvdfELi1YsULA==
+  azure-container-name: rsoimages
 
 

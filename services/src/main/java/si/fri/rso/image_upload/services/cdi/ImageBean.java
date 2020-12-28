@@ -16,6 +16,7 @@ import java.util.Date;
 import java.util.TimeZone;
 
 
+import si.fri.rso.image_upload.services.config.AppProperties;
 import si.fri.rso.image_upload.services.infrastructure.AzureStorage;
 
 @RequestScoped
@@ -23,11 +24,8 @@ public class ImageBean {
 
     @Inject
     AzureStorage azureStorage;
-    @Inject @ConfigProperty(name="AZURE_ACCOUNT_NAME")
-    private String accountName;
-
-    @Inject @ConfigProperty(name="AZURE_CONTAINER_NAME")
-    private String containerName;
+    @Inject
+    private AppProperties config;
 
 
 
@@ -49,7 +47,7 @@ public class ImageBean {
     }
 
     private String generateBlobUrl(String blobName, String sasToken) {
-        String blobUrl = "https://" + this.accountName + ".blob.core.windows.net/" + this.containerName + "/" + blobName;
+        String blobUrl = "https://" + config.getAccountName() + ".blob.core.windows.net/" + config.getContainerName() + "/" + blobName;
         return blobUrl + "?" + sasToken;
 
 

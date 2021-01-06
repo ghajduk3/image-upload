@@ -17,6 +17,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 //import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.Config;
 import org.eclipse.microprofile.config.inject.ConfigProperty;
+import si.fri.rso.image_upload.services.cdi.ImageBean;
 import si.fri.rso.image_upload.services.config.AppProperties;
 
 import java.io.UnsupportedEncodingException;
@@ -28,9 +29,12 @@ import java.util.Base64;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.logging.Logger;
 
 @ApplicationScoped
 public class AzureStorage {
+
+    private Logger log = Logger.getLogger(ImageBean.class.getName());
 
     @Inject
     private AppProperties config;
@@ -94,7 +98,7 @@ public class AzureStorage {
                     "&spr=https" +
                     "&sig=" + URLEncoder.encode(signature,"UTF-8");
         } catch (InvalidKeyException | NoSuchAlgorithmException | UnsupportedEncodingException e) {
-            e.printStackTrace();
+            log.severe(e.getMessage());
         }
 
         return sasToken;

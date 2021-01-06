@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.TimeZone;
+import java.util.logging.Logger;
 
 
 import si.fri.rso.image_upload.services.config.AppProperties;
@@ -22,6 +23,7 @@ import si.fri.rso.image_upload.services.infrastructure.AzureStorage;
 @RequestScoped
 public class ImageBean {
 
+    private Logger log = Logger.getLogger(ImageBean.class.getName());
     @Inject
     AzureStorage azureStorage;
     @Inject
@@ -39,9 +41,8 @@ public class ImageBean {
             System.out.println(imageUri);
 
         } catch (Exception ex) {
-            System.out.printf("Greska je : %s", ex.toString());
+            log.severe(ex.getMessage());
         }
-        System.out.println(imageUri);
         return new ImageDTO(filename,filesize,imageUri);
 
     }

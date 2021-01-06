@@ -50,7 +50,7 @@ kind: Service
 metadata:
   name: image-upload
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   ports:
     - port: 8080
       protocol: TCP

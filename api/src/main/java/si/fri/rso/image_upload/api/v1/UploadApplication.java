@@ -7,7 +7,7 @@ import javax.ws.rs.core.Application;
 import java.util.HashMap;
 import java.util.Map;
 
-@RegisterService(value = "image-upload", ttl = 20, pingInterval = 15, version = "1.0.0", singleton = false)
+@RegisterService(value="image-upload", ttl = 20, pingInterval = 15, version = "1.0.0", singleton = false)
 @ApplicationPath("/v1")
 public class UploadApplication extends Application{
 

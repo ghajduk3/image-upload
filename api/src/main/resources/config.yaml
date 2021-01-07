@@ -50,4 +50,7 @@ azure-properties:
   azure-account-key:
   azure-container-name: rsoimages
 
+rest-properties:
+  maintenance-mode: false
+
 

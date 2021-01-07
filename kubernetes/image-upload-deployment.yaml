@@ -26,7 +26,7 @@ spec:
             - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
               value: http://etcd:2379
             - name: AZUREPROPERTIES_AZUREACCOUNTKEY
-              value: eG0vV1hTbW1UN1g4NlpNNDlYRWxiZlNSNXFsSC92aXFTNHIwY0ppNU5iYnNxWXQ4ZmoyMmJNVUUyRGh2MFFReDN2aDZ4a1RXWmx2ZGZFTGkxWXNVTEE9PQ==
+              value: xm/WXSmmT7X86ZM49XElbfSR5qlH/viqS4r0cJi5NbbsqYt8fj22bMUE2Dhv0QQx3vh6xkTWZlvdfELi1YsULA==
           imagePullPolicy: Always
           ports:
             - containerPort: 8082

@@ -13,10 +13,6 @@ spec:
       labels:
         app: image-upload
     spec:
-#      volumes:
-#        - name: google-cloud-key
-#          secret:
-#            secretName: pubsub-key
       containers:
         - image: ghajduk3/image-upload:latest
           name: image-upload
@@ -26,7 +22,10 @@ spec:
             - name: KUMULUZEE_DISCOVERY_ETCD_HOSTS
               value: http://etcd:2379
             - name: AZUREPROPERTIES_AZUREACCOUNTKEY
-              value: xm/WXSmmT7X86ZM49XElbfSR5qlH/viqS4r0cJi5NbbsqYt8fj22bMUE2Dhv0QQx3vh6xkTWZlvdfELi1YsULA==
+              valueFrom:
+                secretKeyRef:
+                  name: azure-acc
+                  key: AZUREPROPERTIES_AZUREACCOUNTKEY
           imagePullPolicy: Always
           ports:
             - containerPort: 8082

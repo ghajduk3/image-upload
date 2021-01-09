@@ -9,11 +9,7 @@ kumuluzee:
       hosts: http://localhost:2379
   version: 1.0.0
   server:
-#    local url
-#    base-url: http://localhost:8082
-#    base-url: http://image-upload:8082
-    base-url: http://52.191.32.66
-#    base-url: http://localhost:8082   External
+    base-url: http://localhost:8082
     http:
       port: 8082
   discovery:
